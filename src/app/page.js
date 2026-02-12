@@ -2,6 +2,7 @@
 
 import Button from "@/app/components/button";
 import Confirm from "@/app/components/confirm";
+import Dropdown from "@/app/components/dropdown";
 import { useState } from "react";
 
 export default function Home() {
@@ -14,6 +15,8 @@ export default function Home() {
       <Button setOpen={setOpen}>Open</Button>
 
       <Confirm open={open} setOpen={setOpen} />
+
+      <Dropdown />
     </>
   );
 }
