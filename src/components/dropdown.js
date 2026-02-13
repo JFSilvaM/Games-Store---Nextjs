@@ -5,7 +5,7 @@ import {
   PencilIcon,
   Square2StackIcon,
   TrashIcon,
-} from "@heroicons/react/16/solid";
+} from "@heroicons/react/24/solid";
 
 export default function Dropdown() {
   return (
