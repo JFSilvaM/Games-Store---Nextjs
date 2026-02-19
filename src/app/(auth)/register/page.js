@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function SignUpPage() {
   return (
     <div className="w-2/3">
-      <h3 className="mb-5">Crear cuenta</h3>
+      <h3 className="mb-5 font-semibold">Crear cuenta</h3>
 
       <RegisterForm />
 

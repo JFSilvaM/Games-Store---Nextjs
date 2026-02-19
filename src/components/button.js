@@ -1,12 +1,21 @@
 import { Button as HeadlessButton } from "@headlessui/react";
+import { ArrowPathIcon } from "@heroicons/react/24/solid";
+import { useFormStatus } from "react-dom";
 
-export default function Button({ setOpen, children }) {
+export default function Button({ children, type = "button" }) {
+  const { pending } = useFormStatus();
+
   return (
     <HeadlessButton
-      className="cursor-pointer rounded-md bg-orange-400 px-8 py-4 text-white hover:bg-amber-400 focus:bg-amber-400 active:bg-amber-400"
-      onClick={() => setOpen(true)}
+      type={type}
+      disabled={pending}
+      className="cursor-pointer rounded-md bg-orange-600 px-3 py-1.5 text-sm/6 font-semibold"
     >
-      {children}
+      {pending ? (
+        <ArrowPathIcon className="h-4 w-4 animate-spin" aria-hidden="true" />
+      ) : (
+        children
+      )}
     </HeadlessButton>
   );
 }

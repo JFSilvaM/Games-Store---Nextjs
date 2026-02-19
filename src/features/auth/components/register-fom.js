@@ -1,65 +1,74 @@
+"use client";
+
+import Button from "@/components/button";
+import {
+  initialValues,
+  validationSchema,
+} from "@/features/auth/forms/register.form";
+import { useFormik } from "formik";
+
 export const RegisterForm = () => {
+  const formik = useFormik({
+    initialValues: initialValues(),
+    validationSchema: validationSchema(),
+    validateOnChange: false,
+    onSubmit: (formValue) => {
+      console.log(formValue);
+    },
+  });
+
   return (
-    <>
-      <form action="#" method="POST" className="space-y-6">
+    <form action={formik.handleSubmit} className="flex flex-col gap-4">
+      <div className="grid grid-cols-2 gap-4">
         <input
           id="email"
           name="email"
-          type="email"
-          required
+          type="text"
           autoComplete="email"
           placeholder="Correo eletrónico"
-          className="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-orange-500 sm:text-sm/6"
+          value={formik.values.email}
+          onChange={formik.handleChange}
+          className={`rounded-md bg-white/5 px-3 py-1.5 outline-1 -outline-offset-1 focus:outline-2 focus:-outline-offset-2 sm:text-sm/6 ${formik.errors.email ? "outline-red-600 placeholder:text-red-200 focus:outline-red-600" : "outline-white/10 placeholder:text-gray-500 focus:outline-orange-600"}`}
         />
 
-        <div>
-          <div className="flex items-center justify-between">
-            <label
-              htmlFor="password"
-              className="block text-sm/6 font-medium text-gray-100"
-            >
-              Password
-            </label>
-            <div className="text-sm">
-              <a
-                href="#"
-                className="font-semibold text-indigo-400 hover:text-indigo-300"
-              >
-                Forgot password?
-              </a>
-            </div>
-          </div>
-          <div className="mt-2">
-            <input
-              id="password"
-              name="password"
-              type="password"
-              required
-              autoComplete="current-password"
-              className="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
-            />
-          </div>
-        </div>
+        <input
+          id="username"
+          name="username"
+          type="text"
+          autoComplete="username"
+          placeholder="Nombre de usuario"
+          value={formik.values.username}
+          onChange={formik.handleChange}
+          onError={() => formik.errors.username}
+          className={`rounded-md bg-white/5 px-3 py-1.5 outline-1 -outline-offset-1 focus:outline-2 focus:-outline-offset-2 sm:text-sm/6 ${formik.errors.username ? "outline-red-600 placeholder:text-red-200 focus:outline-red-600" : "outline-white/10 placeholder:text-gray-500 focus:outline-orange-600"}`}
+        />
 
-        <div>
-          <button
-            type="submit"
-            className="flex w-full justify-center rounded-md bg-indigo-500 px-3 py-1.5 text-sm/6 font-semibold text-white hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
-          >
-            Sign in
-          </button>
-        </div>
-      </form>
+        <input
+          id="name"
+          name="name"
+          type="text"
+          autoComplete="name"
+          placeholder="Nombre y apellidos"
+          value={formik.values.name}
+          onChange={formik.handleChange}
+          onError={() => formik.errors.name}
+          className={`rounded-md bg-white/5 px-3 py-1.5 outline-1 -outline-offset-1 focus:outline-2 focus:-outline-offset-2 sm:text-sm/6 ${formik.errors.name ? "outline-red-600 placeholder:text-red-200 focus:outline-red-600" : "outline-white/10 placeholder:text-gray-500 focus:outline-orange-600"}`}
+        />
 
-      <p className="mt-10 text-center text-sm/6 text-gray-400">
-        Not a member?{" "}
-        <a
-          href="#"
-          className="font-semibold text-indigo-400 hover:text-indigo-300"
-        >
-          Start a 14 day free trial
-        </a>
-      </p>
-    </>
+        <input
+          id="password"
+          name="password"
+          type="password"
+          autoComplete="current-password"
+          placeholder="Contraseña"
+          value={formik.values.password}
+          onChange={formik.handleChange}
+          onError={() => formik.errors.password}
+          className={`rounded-md bg-white/5 px-3 py-1.5 outline-1 -outline-offset-1 focus:outline-2 focus:-outline-offset-2 sm:text-sm/6 ${formik.errors.password ? "outline-red-600 placeholder:text-red-200 focus:outline-red-600" : "outline-white/10 placeholder:text-gray-500 focus:outline-orange-600"}`}
+        />
+      </div>
+
+      <Button type="submit">Registrarse</Button>
+    </form>
   );
 };

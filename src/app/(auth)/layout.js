@@ -7,7 +7,13 @@ export default function AuthLayout({ children }) {
     <div className="flex h-screen max-h-screen flex-row justify-between">
       <div className="absolute top-0 left-0 flex w-full justify-between p-4">
         <Link href="/">
-          <Image src="/logo.png" alt="Gaming" width={165} height={165} />
+          <Image
+            src="/logo.png"
+            alt="Gaming"
+            width={165}
+            height={165}
+            className="h-auto w-auto"
+          />
         </Link>
 
         <Link href="/">
