@@ -1,18 +1,18 @@
 "use client";
 
 import { ENV } from "@/config/env";
-import { initialValues, registerSchema } from "@/lib/validation/registerSchema";
+import { initialValues, registerSchema } from "@/lib/validation/loginSchema";
 import { Button } from "@headlessui/react";
 import { ArrowPathIcon } from "@heroicons/react/24/solid";
 import { Field, Form, Formik } from "formik";
 import { useRouter } from "next/navigation";
 
-const RegisterForm = () => {
+const LoginForm = () => {
   const router = useRouter();
 
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     try {
-      const res = await fetch(`${ENV.API_URL}/${ENV.ENDPOINTS.AUTH.REGISTER}`, {
+      const res = await fetch(`${ENV.API_URL}/${ENV.ENDPOINTS.AUTH.LOGIN}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),
@@ -24,7 +24,7 @@ const RegisterForm = () => {
       }
 
       resetForm();
-      router.push("/login");
+      router.push("/");
     } catch (err) {
       throw err;
     } finally {
@@ -43,18 +43,10 @@ const RegisterForm = () => {
       {({ isSubmitting, errors }) => (
         <Form noValidate className="flex flex-col gap-4">
           <Field
-            id="username"
-            name="username"
-            placeholder="Nombre de usuario"
-            className={`rounded-md bg-white/5 px-3 py-1.5 outline-1 -outline-offset-1 focus:outline-2 focus:-outline-offset-2 sm:text-sm/6 ${errors.username ? "outline-red-600 placeholder:text-red-200 focus:outline-red-600" : "outline-white/10 placeholder:text-gray-500 focus:outline-orange-600"}`}
-          />
-
-          <Field
-            id="email"
-            name="email"
-            type="email"
-            placeholder="Correo electrónico"
-            className={`rounded-md bg-white/5 px-3 py-1.5 outline-1 -outline-offset-1 focus:outline-2 focus:-outline-offset-2 sm:text-sm/6 ${errors.email ? "outline-red-600 placeholder:text-red-200 focus:outline-red-600" : "outline-white/10 placeholder:text-gray-500 focus:outline-orange-600"}`}
+            id="identifier"
+            name="identifier"
+            placeholder="Correo electrónico o nombre de usuario"
+            className={`rounded-md bg-white/5 px-3 py-1.5 outline-1 -outline-offset-1 focus:outline-2 focus:-outline-offset-2 sm:text-sm/6 ${errors.identifier ? "outline-red-600 placeholder:text-red-200 focus:outline-red-600" : "outline-white/10 placeholder:text-gray-500 focus:outline-orange-600"}`}
           />
 
           <Field
@@ -73,7 +65,7 @@ const RegisterForm = () => {
             {isSubmitting ? (
               <ArrowPathIcon className="h-4 w-4 animate-spin" />
             ) : (
-              "Registrarse"
+              "Entrar"
             )}
           </Button>
         </Form>
@@ -82,4 +74,4 @@ const RegisterForm = () => {
   );
 };
 
-export default RegisterForm;
+export default LoginForm;
