@@ -1,6 +1,7 @@
 "use client";
 
 import { ENV } from "@/config/env";
+import { loginAndRegister } from "@/lib/auth";
 import { initialValues, registerSchema } from "@/lib/validation/registerSchema";
 import { Button } from "@headlessui/react";
 import { ArrowPathIcon } from "@heroicons/react/24/solid";
@@ -12,21 +13,11 @@ const RegisterForm = () => {
 
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     try {
-      const res = await fetch(`${ENV.API_URL}/${ENV.ENDPOINTS.AUTH.REGISTER}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(values),
-      });
-
-      if (!res.ok) {
-        const err = await res.json().catch(() => ({}));
-        throw new Error(err?.error);
-      }
-
+      await loginAndRegister(ENV.ENDPOINTS.AUTH.REGISTER, values);
       resetForm();
       router.push("/login");
-    } catch (err) {
-      throw err;
+    } catch (error) {
+      throw error;
     } finally {
       setSubmitting(false);
     }

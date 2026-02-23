@@ -1,6 +1,8 @@
 "use client";
 
 import { ENV } from "@/config/env";
+import { useAuth } from "@/hooks/use-auth";
+import { loginAndRegister } from "@/lib/auth";
 import { initialValues, registerSchema } from "@/lib/validation/loginSchema";
 import { Button } from "@headlessui/react";
 import { ArrowPathIcon } from "@heroicons/react/24/solid";
@@ -9,24 +11,16 @@ import { useRouter } from "next/navigation";
 
 const LoginForm = () => {
   const router = useRouter();
+  const { login } = useAuth();
 
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     try {
-      const res = await fetch(`${ENV.API_URL}/${ENV.ENDPOINTS.AUTH.LOGIN}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(values),
-      });
-
-      if (!res.ok) {
-        const err = await res.json().catch(() => ({}));
-        throw new Error(err?.error);
-      }
-
+      const result = await loginAndRegister(ENV.ENDPOINTS.AUTH.LOGIN, values);
+      login(result.jwt);
       resetForm();
-      router.push("/");
-    } catch (err) {
-      throw err;
+      // router.push("/");
+    } catch (error) {
+      throw error;
     } finally {
       setSubmitting(false);
     }

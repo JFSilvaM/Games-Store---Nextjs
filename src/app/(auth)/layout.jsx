@@ -1,8 +1,20 @@
+"use client";
+
+import { useAuth } from "@/hooks/use-auth";
 import { XMarkIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function AuthLayout({ children }) {
+  const { user } = useAuth();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (user) router.push("/");
+  }, [user, router]);
+
   return (
     <div className="flex h-screen max-h-screen flex-row justify-between">
       <div className="absolute top-0 left-0 flex w-full justify-between p-4">
