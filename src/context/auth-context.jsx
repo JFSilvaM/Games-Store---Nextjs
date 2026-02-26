@@ -1,6 +1,11 @@
 "use client";
 
-import { setTokenInLocalStorage } from "@/lib/token";
+import {
+  getTokenFromLocalStorage,
+  hasExpired,
+  removeToken,
+  setTokenInLocalStorage,
+} from "@/lib/token";
 import { getUser } from "@/lib/user";
 import { createContext, useEffect, useState } from "react";
 
@@ -12,7 +17,21 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(false);
+    (async () => {
+      const token = getTokenFromLocalStorage();
+
+      if (!token) {
+        logout();
+        setLoading(false);
+        return;
+      }
+
+      if (hasExpired(token)) {
+        logout();
+      }
+
+      await login(token);
+    })();
   }, []);
 
   const login = async (token) => {
@@ -28,12 +47,25 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const logout = () => {
+    removeToken();
+    setToken(null);
+    setUser(null);
+  };
+
+  const updateUser = (key, value) => {
+    setUser({
+      ...user,
+      [key]: value,
+    });
+  };
+
   const data = {
     accessToken: token,
     user,
     login,
-    logout: null,
-    updateUser: null,
+    logout,
+    updateUser,
   };
 
   if (loading) return null;

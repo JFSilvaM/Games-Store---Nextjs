@@ -15,7 +15,7 @@ const AuthLayout = ({ children }) => {
     if (user) router.push("/");
   }, [user, router]);
 
-  return (
+  return user ? null : (
     <div className="flex h-screen max-h-screen flex-row justify-between">
       <div className="absolute top-0 left-0 flex w-full justify-between p-4">
         <Link href="/">
