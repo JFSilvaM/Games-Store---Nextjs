@@ -7,7 +7,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
-export default function AuthLayout({ children }) {
+const AuthLayout = ({ children }) => {
   const { user } = useAuth();
   const router = useRouter();
 
@@ -38,4 +38,6 @@ export default function AuthLayout({ children }) {
       <div className="h-full w-1/2 bg-[url(/sign-wallpaper.jpg)] bg-cover bg-center" />
     </div>
   );
-}
+};
+
+export default AuthLayout;

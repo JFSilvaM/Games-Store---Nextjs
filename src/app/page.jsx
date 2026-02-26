@@ -5,7 +5,7 @@ import Confirm from "@/components/confirm";
 import Dropdown from "@/components/dropdown";
 import { useState } from "react";
 
-export default function Home() {
+const Home = () => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -19,4 +19,6 @@ export default function Home() {
       <Dropdown />
     </>
   );
-}
+};
+
+export default Home;
