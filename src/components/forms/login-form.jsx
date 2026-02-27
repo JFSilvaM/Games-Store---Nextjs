@@ -57,7 +57,7 @@ const LoginForm = () => {
             className="flex cursor-pointer justify-center rounded-md bg-orange-600 px-3 py-1.5 text-sm/6 font-semibold"
           >
             {isSubmitting ? (
-              <ArrowPathIcon className="h-4 w-4 animate-spin" />
+              <ArrowPathIcon className="size-4 animate-spin" />
             ) : (
               "Entrar"
             )}

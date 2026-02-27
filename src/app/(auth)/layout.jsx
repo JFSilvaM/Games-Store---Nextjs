@@ -29,7 +29,7 @@ const AuthLayout = ({ children }) => {
         </Link>
 
         <Link href="/">
-          <XMarkIcon className="m-0 h-7 w-7 text-orange-600" />
+          <XMarkIcon className="m-0 size-7 text-orange-600" />
         </Link>
       </div>
 

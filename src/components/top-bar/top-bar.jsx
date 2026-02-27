@@ -1,4 +1,5 @@
 import Account from "@/components/top-bar/components/account";
+import Menu from "@/components/top-bar/components/menu";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -17,7 +18,7 @@ const TopBar = ({ isOpenSearch }) => (
     </div>
 
     <div className="flex w-3/5 justify-center">
-      <span>MENU</span>
+      <Menu isOpenSearch={isOpenSearch} />
     </div>
 
     <div className="flex w-1/5 justify-end">
