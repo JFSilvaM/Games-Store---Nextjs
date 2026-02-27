@@ -1,0 +1,19 @@
+import Container from "@/components/container";
+import TopBar from "@/components/top-bar/top-bar";
+
+const BasicLayout = ({
+  children,
+  isOpenSearch = false,
+  isContainer = false,
+  relative = false,
+}) => (
+  <>
+    <TopBar isOpenSearch={isOpenSearch} />
+
+    <Container fluid={isContainer} paddingTop={relative}>
+      {children}
+    </Container>
+  </>
+);
+
+export default BasicLayout;
