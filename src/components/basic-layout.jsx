@@ -1,5 +1,5 @@
 import Container from "@/components/container";
-import Footer from "@/components/footer/footer";
+import Footer from "@/components/footer";
 import TopBar from "@/components/top-bar/top-bar";
 
 const BasicLayout = ({
