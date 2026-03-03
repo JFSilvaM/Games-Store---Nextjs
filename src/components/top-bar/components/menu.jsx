@@ -26,7 +26,7 @@ const Menu = ({ isOpenSearch }) => {
   }, []);
 
   return (
-    <div className="relative flex items-end justify-end rounded-l-full bg-neutral-800 pr-12 pl-5 backdrop-blur-xl">
+    <div className="relative flex items-end justify-end rounded-l-full bg-neutral-900 pr-12 pl-5 backdrop-blur-xl">
       {platforms?.map((platform) => (
         <Link
           key={platform.documentId}
@@ -62,7 +62,7 @@ const Menu = ({ isOpenSearch }) => {
         <Input
           id="search-games"
           placeholder="Buscador"
-          className="text-md w-full overflow-hidden py-2.5 pr-20 pl-7 data-focus:outline-none"
+          className="text-md placeholder:text-foreground/70 w-full overflow-hidden py-2.5 pr-20 pl-7 data-focus:outline-none"
         />
       </div>
     </div>

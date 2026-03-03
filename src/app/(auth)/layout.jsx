@@ -15,28 +15,30 @@ const AuthLayout = ({ children }) => {
     if (user) router.push("/");
   }, [user, router]);
 
-  return user ? null : (
-    <div className="flex h-screen max-h-screen flex-row justify-between">
-      <div className="absolute top-0 left-0 flex w-full justify-between p-4">
-        <Link href="/">
-          <Image
-            src="/logo.png"
-            alt="Gaming"
-            width={165}
-            height={165}
-            className="h-auto w-auto"
-          />
-        </Link>
+  return (
+    !user && (
+      <div className="flex h-screen max-h-screen flex-row justify-between">
+        <div className="absolute top-0 left-0 flex w-full justify-between p-4">
+          <Link href="/">
+            <Image
+              src="/logo.png"
+              alt="Gaming"
+              width={165}
+              height={165}
+              className="h-auto w-auto"
+            />
+          </Link>
 
-        <Link href="/">
-          <XMarkIcon className="m-0 size-7 text-orange-600" />
-        </Link>
+          <Link href="/">
+            <XMarkIcon className="m-0 size-7 text-orange-600" />
+          </Link>
+        </div>
+
+        <div className="flex w-1/2 items-center justify-center">{children}</div>
+
+        <div className="h-full w-1/2 bg-[url(/sign-wallpaper.jpg)] bg-cover bg-center" />
       </div>
-
-      <div className="flex w-1/2 items-center justify-center">{children}</div>
-
-      <div className="h-full w-1/2 bg-[url(/sign-wallpaper.jpg)] bg-cover bg-center" />
-    </div>
+    )
   );
 };
 

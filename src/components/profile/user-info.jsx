@@ -10,7 +10,7 @@ const UserInfo = () => {
 
   return (
     <div className="flex flex-col items-center pt-16">
-      <Button className="m-0 mb-5 flex h-28 w-28 cursor-auto items-center justify-center rounded-2xl bg-neutral-800 p-1.5">
+      <Button className="m-0 mb-5 flex h-28 w-28 cursor-auto items-center justify-center rounded-2xl bg-neutral-700 p-1.5">
         <UserIcon className="flex size-14 items-center justify-center" />
       </Button>
 

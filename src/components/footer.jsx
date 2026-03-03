@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 const Footer = () => (
-  <div className="bg-neutral-800 py-8">
+  <div className="bg-neutral-900 py-8">
     <Container fluid>
       <div className="flex justify-between *:w-1/3">
         <div>
@@ -30,7 +30,7 @@ const Footer = () => (
         <div className="flex items-start justify-end gap-10">
           <Link href="#">
             <img
-              src="https://cdn.simpleicons.org/facebook/ffffff"
+              src="https://cdn.simpleicons.org/facebook/ededed"
               alt="Facebook"
               className="h-6 w-6"
             />
@@ -38,7 +38,7 @@ const Footer = () => (
 
           <Link href="#">
             <img
-              src="https://cdn.simpleicons.org/x/ffffff"
+              src="https://cdn.simpleicons.org/x/ededed"
               alt="X"
               className="h-6 w-6"
             />
@@ -46,7 +46,7 @@ const Footer = () => (
 
           <Link href="https://www.linkedin.com/in/jfsilvam" target="_blank">
             <svg
-              className="h-6 w-6 text-white"
+              className="text-foreground h-6 w-6"
               viewBox="0 0 24 24"
               fill="currentColor"
             >
@@ -56,7 +56,7 @@ const Footer = () => (
 
           <Link href="#">
             <img
-              src="https://cdn.simpleicons.org/youtube/ffffff"
+              src="https://cdn.simpleicons.org/youtube/ededed"
               alt="YouTube"
               className="h-6 w-6"
             />

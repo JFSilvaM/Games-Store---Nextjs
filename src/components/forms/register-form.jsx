@@ -37,7 +37,7 @@ const RegisterForm = () => {
             id="username"
             name="username"
             placeholder="Nombre de usuario"
-            className={`rounded-md bg-white/5 px-3 py-1.5 outline-1 -outline-offset-1 focus:outline-2 focus:-outline-offset-2 sm:text-sm/6 ${errors.username ? "outline-red-600 placeholder:text-red-200 focus:outline-red-600" : "outline-white/10 placeholder:text-gray-500 focus:outline-orange-600"}`}
+            className={`rounded-md bg-white/5 px-3 py-1.5 outline-1 -outline-offset-1 focus:outline-2 focus:-outline-offset-2 sm:text-sm/6 ${errors.username ? "outline-red-600 placeholder:text-red-200 focus:outline-red-600" : "outline-white/10 placeholder:text-gray-400 focus:outline-orange-600"}`}
           />
 
           <Field
@@ -45,7 +45,7 @@ const RegisterForm = () => {
             name="email"
             type="email"
             placeholder="Correo electrónico"
-            className={`rounded-md bg-white/5 px-3 py-1.5 outline-1 -outline-offset-1 focus:outline-2 focus:-outline-offset-2 sm:text-sm/6 ${errors.email ? "outline-red-600 placeholder:text-red-200 focus:outline-red-600" : "outline-white/10 placeholder:text-gray-500 focus:outline-orange-600"}`}
+            className={`rounded-md bg-white/5 px-3 py-1.5 outline-1 -outline-offset-1 focus:outline-2 focus:-outline-offset-2 sm:text-sm/6 ${errors.email ? "outline-red-600 placeholder:text-red-200 focus:outline-red-600" : "outline-white/10 placeholder:text-gray-400 focus:outline-orange-600"}`}
           />
 
           <Field
@@ -53,7 +53,7 @@ const RegisterForm = () => {
             name="password"
             type="password"
             placeholder="Contraseña"
-            className={`rounded-md bg-white/5 px-3 py-1.5 outline-1 -outline-offset-1 focus:outline-2 focus:-outline-offset-2 sm:text-sm/6 ${errors.password ? "outline-red-600 placeholder:text-red-200 focus:outline-red-600" : "outline-white/10 placeholder:text-gray-500 focus:outline-orange-600"}`}
+            className={`rounded-md bg-white/5 px-3 py-1.5 outline-1 -outline-offset-1 focus:outline-2 focus:-outline-offset-2 sm:text-sm/6 ${errors.password ? "outline-red-600 placeholder:text-red-200 focus:outline-red-600" : "outline-white/10 placeholder:text-gray-400 focus:outline-orange-600"}`}
           />
 
           <Button
@@ -62,7 +62,7 @@ const RegisterForm = () => {
             className="flex cursor-pointer justify-center rounded-md bg-orange-600 px-3 py-1.5 text-sm/6 font-semibold"
           >
             {isSubmitting ? (
-              <ArrowPathIcon className="size-4 animate-spin" />
+              <ArrowPathIcon className="size-6 animate-spin" />
             ) : (
               "Registrarse"
             )}

@@ -1,4 +1,4 @@
-import Account from "@/components/top-bar/components/account";
+import Account from "@/components/top-bar/components/account/account";
 import Menu from "@/components/top-bar/components/menu";
 import Image from "next/image";
 import Link from "next/link";

@@ -1,8 +1,8 @@
 "use client";
 
+import SelectMenu from "@/components/top-bar/components/account/components/select-menu";
 import { useAuth } from "@/hooks/use-auth";
 import { Button } from "@headlessui/react";
-import { UserIcon } from "@heroicons/react/24/outline";
 import { ShoppingCartIcon } from "@heroicons/react/24/solid";
 import { useRouter } from "next/navigation";
 
@@ -17,11 +17,6 @@ const Account = () => {
     router.push("/cart");
   };
 
-  const goToAccount = () => {
-    if (!user) return router.push("/login");
-    router.push("/account");
-  };
-
   return (
     <div className="flex gap-7">
       <Button className="relative cursor-pointer hover:text-orange-600">
@@ -34,11 +29,7 @@ const Account = () => {
         )}
       </Button>
 
-      <Button
-        className={`cursor-pointer p-1.5 ${user ? "rounded-lg border-2 border-neutral-800 bg-neutral-800 hover:border-orange-600" : "hover:text-orange-600"}`}
-      >
-        <UserIcon onClick={goToAccount} className="size-6" />
-      </Button>
+      <SelectMenu />
     </div>
   );
 };
