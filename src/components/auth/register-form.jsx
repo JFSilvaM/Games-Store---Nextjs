@@ -2,7 +2,10 @@
 
 import { ENV } from "@/config/env";
 import { loginAndRegister } from "@/lib/auth";
-import { initialValues, registerSchema } from "@/lib/validation/registerSchema";
+import {
+  initialValues,
+  registerSchema,
+} from "@/lib/validation/auth/register-schema";
 import { Button } from "@headlessui/react";
 import { ArrowPathIcon } from "@heroicons/react/24/solid";
 import { Field, Form, Formik } from "formik";

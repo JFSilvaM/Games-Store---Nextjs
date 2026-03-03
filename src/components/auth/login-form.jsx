@@ -3,7 +3,10 @@
 import { ENV } from "@/config/env";
 import { useAuth } from "@/hooks/use-auth";
 import { loginAndRegister } from "@/lib/auth";
-import { initialValues, registerSchema } from "@/lib/validation/loginSchema";
+import {
+  initialValues,
+  registerSchema,
+} from "@/lib/validation/auth/login-schema";
 import { Button } from "@headlessui/react";
 import { ArrowPathIcon } from "@heroicons/react/24/solid";
 import { Field, Form, Formik } from "formik";

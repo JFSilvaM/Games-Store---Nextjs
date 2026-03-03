@@ -1,3 +1,4 @@
+import Settings from "@/components/profile/tabs/components/settings";
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
 
 const tabsInfo = [
@@ -15,16 +16,16 @@ const tabsInfo = [
   },
   {
     title: "Ajustes",
-    content: <p>Contenido de ajustes</p>,
+    content: <Settings />,
   },
 ];
 
 const Tabs = () => (
-  <TabGroup className="mt-12">
+  <TabGroup className="my-12">
     <TabList className="flex">
       {tabsInfo.map((tab) => (
-        <div key={tab.title}>
-          <Tab className="cursor-pointer border-b border-neutral-600 px-5 outline-none hover:text-orange-600 data-selected:border-b data-selected:border-orange-600 data-selected:text-orange-600">
+        <div key={tab.title} className="flex w-full justify-center">
+          <Tab className="w-full cursor-pointer justify-between border-b border-neutral-600 outline-none hover:text-orange-600 data-selected:border-b data-selected:border-orange-600 data-selected:text-orange-600">
             {tab.title}
           </Tab>
         </div>

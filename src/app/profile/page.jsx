@@ -1,7 +1,7 @@
 "use client";
 
 import BasicLayout from "@/components/basic-layout";
-import Tabs from "@/components/profile/tabs";
+import Tabs from "@/components/profile/tabs/tabs";
 import UserInfo from "@/components/profile/user-info";
 import { useAuth } from "@/hooks/use-auth";
 import { useRouter } from "next/navigation";
