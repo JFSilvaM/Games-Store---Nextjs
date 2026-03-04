@@ -13,7 +13,7 @@ const ProfilePage = () => {
 
   useEffect(() => {
     if (!user) router.push("/login");
-  }, []);
+  }, [user, router]);
 
   return (
     user && (

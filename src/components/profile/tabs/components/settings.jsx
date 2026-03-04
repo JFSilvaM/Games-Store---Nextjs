@@ -6,14 +6,14 @@ import { ArrowPathIcon } from "@heroicons/react/24/solid";
 import { Field, Form, Formik } from "formik";
 
 const Settings = () => {
-  const { user, setUser } = useAuth();
+  const { user, setUser, logout } = useAuth();
 
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     try {
       const updatedValues = {
         ...values,
         email: values.email || undefined,
-        repeatEmail: values.repeatEmail || undefined,
+        password: values.password || undefined,
       };
       await updateUser(user.id, updatedValues);
       setUser({
@@ -28,6 +28,7 @@ const Settings = () => {
           repeatEmail: "",
         },
       });
+      if (values.password) logout();
     } catch (error) {
       throw error;
     } finally {
@@ -99,13 +100,14 @@ const Settings = () => {
               </div>
             </div>
 
-            {/* <div className="flex w-full flex-col gap-1">
+            <div className="flex w-full flex-col gap-1">
               <label>Contraseña</label>
 
               <div className="flex flex-col gap-2">
                 <Field
                   id="password"
                   name="password"
+                  type="password"
                   placeholder="Nueva contraseña"
                   className={`rounded-md bg-white/5 px-3 py-1.5 outline-1 -outline-offset-1 focus:outline-2 focus:-outline-offset-2 sm:text-sm/6 ${errors.password ? "outline-red-600 placeholder:text-red-200 focus:outline-red-600" : "outline-white/10 placeholder:text-gray-400 focus:outline-orange-600"}`}
                 />
@@ -113,17 +115,18 @@ const Settings = () => {
                 <Field
                   id="repeatPassword"
                   name="repeatPassword"
-                  placeholder="Repetir nueva contraseña"
+                  type="password"
+                  placeholder="Repetir contraseña"
                   className={`rounded-md bg-white/5 px-3 py-1.5 outline-1 -outline-offset-1 focus:outline-2 focus:-outline-offset-2 sm:text-sm/6 ${errors.repeatPassword ? "outline-red-600 placeholder:text-red-200 focus:outline-red-600" : "outline-white/10 placeholder:text-gray-400 focus:outline-orange-600"}`}
                 />
               </div>
-            </div> */}
+            </div>
           </div>
 
           <Button
             type="submit"
             disabled={isSubmitting}
-            className="flex cursor-pointer justify-center rounded-md bg-orange-600 px-3 py-1.5 font-semibold"
+            className="w-fit cursor-pointer self-end rounded-md bg-orange-600 px-8 py-1.5 font-semibold"
           >
             {isSubmitting ? (
               <ArrowPathIcon className="size-6 animate-spin" />

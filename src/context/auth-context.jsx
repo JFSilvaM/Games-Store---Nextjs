@@ -36,6 +36,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (token) => {
     try {
+      if (!token) return;
       setTokenInLocalStorage(token);
       const userResponse = await getUser();
       setUser(userResponse);
