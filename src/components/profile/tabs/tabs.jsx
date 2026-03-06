@@ -1,3 +1,4 @@
+import Address from "@/components/profile/tabs/components/address/address";
 import Settings from "@/components/profile/tabs/components/settings";
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
 
@@ -12,7 +13,7 @@ const tabsInfo = [
   },
   {
     title: "Direcciones",
-    content: <p>Contenido de direcciones</p>,
+    content: <Address />,
   },
   {
     title: "Ajustes",

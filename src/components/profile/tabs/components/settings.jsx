@@ -1,6 +1,9 @@
 import { useAuth } from "@/hooks/use-auth";
 import { updateUser } from "@/lib/user";
-import { initialValues, settingsSchema } from "@/lib/validation/settings-tab";
+import {
+  initialValues,
+  settingsSchema,
+} from "@/lib/validation/profile-tabs/settings";
 import { Button } from "@headlessui/react";
 import { ArrowPathIcon } from "@heroicons/react/24/solid";
 import { Field, Form, Formik } from "formik";
@@ -126,7 +129,7 @@ const Settings = () => {
           <Button
             type="submit"
             disabled={isSubmitting}
-            className="w-fit cursor-pointer self-end rounded-md bg-orange-600 px-8 py-1.5 font-semibold"
+            className="flex w-1/5 cursor-pointer justify-center self-end rounded-md bg-orange-600 px-8 py-1.5 font-semibold"
           >
             {isSubmitting ? (
               <ArrowPathIcon className="size-6 animate-spin" />
