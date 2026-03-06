@@ -1,12 +1,16 @@
 import AddressForm from "@/components/profile/tabs/components/address/components/address-form";
+import AddressList from "@/components/profile/tabs/components/address/components/address-list";
 import { Button, Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
 import { PlusIcon } from "@heroicons/react/24/solid";
 import { useState } from "react";
 
 const Address = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [reload, setReload] = useState(false);
 
   const onOpenClose = () => setIsOpen((prev) => !prev);
+
+  const onReload = () => setReload((prev) => !prev);
 
   return (
     <>
@@ -34,9 +38,11 @@ const Address = () => {
             Nueva dirección
           </DialogTitle>
 
-          <AddressForm onOpenClose={onOpenClose} />
+          <AddressForm onOpenClose={onOpenClose} onReload={onReload} />
         </DialogPanel>
       </Dialog>
+
+      <AddressList reload={reload} onReload={onReload} />
     </>
   );
 };

@@ -26,7 +26,7 @@ const Menu = ({ isOpenSearch }) => {
   }, []);
 
   return (
-    <div className="relative flex items-end justify-end rounded-l-full bg-neutral-900 pr-12 pl-5 backdrop-blur-xl">
+    <div className="relative flex items-end justify-end rounded-l-full bg-neutral-900/10 pr-12 pl-5 backdrop-blur-xl">
       {platforms?.map((platform) => (
         <Link
           key={platform.documentId}

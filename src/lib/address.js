@@ -16,3 +16,15 @@ export const createAddress = async (data, userId) => {
     throw error;
   }
 };
+
+export const getAllAddress = async (userId) => {
+  try {
+    const filters = `filters[user][id][$eq]=${userId}`;
+    const url = `${ENV.API_URL}/${ENV.ENDPOINTS.ADDRESS}?${filters}`;
+
+    const response = await authFetch(url);
+    return await response.json();
+  } catch (error) {
+    throw error;
+  }
+};

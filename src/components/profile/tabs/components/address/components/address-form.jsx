@@ -8,12 +8,13 @@ import { Button } from "@headlessui/react";
 import { ArrowPathIcon } from "@heroicons/react/24/solid";
 import { Field, Form, Formik } from "formik";
 
-const AddressForm = ({ onOpenClose }) => {
+const AddressForm = ({ onOpenClose, onReload }) => {
   const { user } = useAuth();
 
   const handleSubmit = async (values, { setSubmitting }) => {
     try {
       await createAddress(values, user.id);
+      onReload();
       onOpenClose();
     } catch (error) {
       throw error;
@@ -96,7 +97,7 @@ const AddressForm = ({ onOpenClose }) => {
           <Button
             type="submit"
             disabled={isSubmitting}
-            className="flex w-1/3 cursor-pointer justify-center self-end rounded-md bg-orange-600 px-8 py-1.5 font-semibold"
+            className="flex w-1/3 cursor-pointer justify-center self-end rounded-md bg-orange-600 px-8 py-1.5 font-semibold outline-none"
           >
             {isSubmitting ? (
               <ArrowPathIcon className="size-6 animate-spin" />
