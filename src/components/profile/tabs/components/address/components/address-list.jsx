@@ -1,6 +1,7 @@
+import ConfirmModal from "@/components/confirm-modal";
 import AddressModalForm from "@/components/profile/tabs/components/address/components/address-modal-form";
 import { useAuth } from "@/hooks/use-auth";
-import { getAllAddress } from "@/lib/address";
+import { deleteAddress, getAllAddress } from "@/lib/address";
 import { Button } from "@headlessui/react";
 import {
   ArrowPathIcon,
@@ -13,17 +14,41 @@ const AddressList = ({ reload, onReload }) => {
   const { user } = useAuth();
   const [loading, setLoading] = useState(true);
   const [addresses, setAddresses] = useState(null);
-  const [isOpenEdit, setIsOpenEdit] = useState(false);
   const [addressEditData, setAddressEditData] = useState();
+  const [addressDeleteData, setAddressDeleteData] = useState();
+  const [isOpenEdit, setIsOpenEdit] = useState(false);
+  const [isOpenDelete, setIsOpenDelete] = useState(false);
 
   const onOpenCloseEdit = (e, address) => {
     if (!isOpenEdit) {
       e.preventDefault();
       setAddressEditData(address);
+    } else {
+      setAddressEditData();
     }
-    if (isOpenEdit) setAddressEditData();
 
     setIsOpenEdit((prev) => !prev);
+  };
+
+  const onOpenCloseDelete = (e, address) => {
+    if (!isOpenDelete) {
+      e.preventDefault();
+      setAddressDeleteData(address);
+    } else {
+      setAddressDeleteData();
+    }
+
+    setIsOpenDelete((prev) => !prev);
+  };
+
+  const handleConfirmDelete = async () => {
+    try {
+      await deleteAddress(addressDeleteData.documentId);
+      onOpenCloseDelete();
+      onReload();
+    } catch (error) {
+      throw error;
+    }
   };
 
   useEffect(() => {
@@ -67,7 +92,10 @@ const AddressList = ({ reload, onReload }) => {
               <PencilIcon className="size-5" />
             </Button>
 
-            <Button className="cursor-pointer rounded-md bg-orange-600 p-2 outline-none hover:bg-orange-400">
+            <Button
+              onClick={(e) => onOpenCloseDelete(e, address)}
+              className="cursor-pointer rounded-md bg-orange-600 p-2 outline-none hover:bg-orange-400"
+            >
               <TrashIcon className="size-5" />
             </Button>
           </div>
@@ -80,6 +108,14 @@ const AddressList = ({ reload, onReload }) => {
         onReload={onReload}
         title="Editar dirección"
         address={addressEditData}
+      />
+
+      <ConfirmModal
+        isOpen={isOpenDelete}
+        onOpenClose={onOpenCloseDelete}
+        title="Eliminar dirección"
+        content="¿Estás seguro de que quieres eliminar esta dirección?"
+        onAccept={handleConfirmDelete}
       />
     </div>
   );

@@ -44,3 +44,18 @@ export const updateAddress = async (data, addressId) => {
     throw error;
   }
 };
+
+export const deleteAddress = async (addressId) => {
+  try {
+    const url = `${ENV.API_URL}/${ENV.ENDPOINTS.ADDRESS}/${addressId}`;
+    const params = { method: "DELETE" };
+
+    const response = await authFetch(url, params);
+
+    if (response.status === 204) return { success: true };
+
+    return await response.json();
+  } catch (error) {
+    throw error;
+  }
+};
