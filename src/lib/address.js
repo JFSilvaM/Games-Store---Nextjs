@@ -28,3 +28,19 @@ export const getAllAddress = async (userId) => {
     throw error;
   }
 };
+
+export const updateAddress = async (data, addressId) => {
+  try {
+    const url = `${ENV.API_URL}/${ENV.ENDPOINTS.ADDRESS}/${addressId}`;
+    const params = {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ data }),
+    };
+
+    const response = await authFetch(url, params);
+    return await response.json();
+  } catch (error) {
+    throw error;
+  }
+};

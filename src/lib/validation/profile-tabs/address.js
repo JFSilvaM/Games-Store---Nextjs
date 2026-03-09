@@ -1,13 +1,13 @@
 import * as Yup from "yup";
 
-export const initialValues = () => ({
-  title: "",
-  name: "",
-  address: "",
-  city: "",
-  state: "",
-  postal_code: "",
-  phone: "",
+export const initialValues = (address) => ({
+  title: address?.title || "",
+  name: address?.name || "",
+  address: address?.address || "",
+  city: address?.city || "",
+  state: address?.state || "",
+  postal_code: address?.postal_code || "",
+  phone: address?.phone || "",
 });
 
 export const addressSchema = Yup.object({

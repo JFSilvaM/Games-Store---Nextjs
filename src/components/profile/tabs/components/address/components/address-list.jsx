@@ -1,5 +1,7 @@
+import AddressModalForm from "@/components/profile/tabs/components/address/components/address-modal-form";
 import { useAuth } from "@/hooks/use-auth";
 import { getAllAddress } from "@/lib/address";
+import { Button } from "@headlessui/react";
 import {
   ArrowPathIcon,
   PencilIcon,
@@ -11,6 +13,18 @@ const AddressList = ({ reload, onReload }) => {
   const { user } = useAuth();
   const [loading, setLoading] = useState(true);
   const [addresses, setAddresses] = useState(null);
+  const [isOpenEdit, setIsOpenEdit] = useState(false);
+  const [addressEditData, setAddressEditData] = useState();
+
+  const onOpenCloseEdit = (e, address) => {
+    if (!isOpenEdit) {
+      e.preventDefault();
+      setAddressEditData(address);
+    }
+    if (isOpenEdit) setAddressEditData();
+
+    setIsOpenEdit((prev) => !prev);
+  };
 
   useEffect(() => {
     (async () => {
@@ -46,16 +60,27 @@ const AddressList = ({ reload, onReload }) => {
           </div>
 
           <div className="flex items-center gap-3">
-            <div className="cursor-pointer rounded-md bg-orange-600 p-2 hover:bg-orange-400">
+            <Button
+              onClick={(e) => onOpenCloseEdit(e, address)}
+              className="cursor-pointer rounded-md bg-orange-600 p-2 outline-none hover:bg-orange-400"
+            >
               <PencilIcon className="size-5" />
-            </div>
+            </Button>
 
-            <div className="cursor-pointer rounded-md bg-orange-600 p-2 hover:bg-orange-400">
+            <Button className="cursor-pointer rounded-md bg-orange-600 p-2 outline-none hover:bg-orange-400">
               <TrashIcon className="size-5" />
-            </div>
+            </Button>
           </div>
         </div>
       ))}
+
+      <AddressModalForm
+        isOpen={isOpenEdit}
+        onOpenClose={onOpenCloseEdit}
+        onReload={onReload}
+        title="Editar dirección"
+        address={addressEditData}
+      />
     </div>
   );
 };
