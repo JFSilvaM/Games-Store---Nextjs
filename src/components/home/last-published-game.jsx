@@ -44,6 +44,7 @@ const LastPublishedGame = () => {
           width={165}
           height={165}
           unoptimized
+          loading="eager"
           className="h-full w-full object-cover"
         />
 
