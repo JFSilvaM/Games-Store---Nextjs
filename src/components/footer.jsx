@@ -5,7 +5,7 @@ import Link from "next/link";
 const Footer = () => (
   <div className="bg-neutral-900 py-8">
     <Container fluid>
-      <div className="flex justify-between *:w-1/3">
+      <div className="flex justify-between">
         <div>
           <Link href="/">
             <Image
@@ -18,14 +18,12 @@ const Footer = () => (
           </Link>
         </div>
 
-        <div>
-          <ul className="m-0 flex flex-col gap-1.5 p-0">
-            <Link href="#">Términos y condiciones</Link>
-            <Link href="#">Política de privacidad</Link>
-            <Link href="#">Contacto</Link>
-            <Link href="#">FAQs</Link>
-          </ul>
-        </div>
+        <ul className="m-0 flex flex-col gap-1.5 p-0">
+          <Link href="#">Términos y condiciones</Link>
+          <Link href="#">Política de privacidad</Link>
+          <Link href="#">Contacto</Link>
+          <Link href="#">FAQs</Link>
+        </ul>
 
         <div className="flex items-start justify-end gap-10">
           <Link href="#">

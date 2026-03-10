@@ -1,8 +1,9 @@
 import BasicLayout from "@/components/basic-layout";
+import LastPublishedGame from "@/components/home/last-published-game";
 
 const Home = () => (
-  <BasicLayout relative>
-    <h2 className="text-2xl">Games Shop</h2>
+  <BasicLayout>
+    <LastPublishedGame />
   </BasicLayout>
 );
 
