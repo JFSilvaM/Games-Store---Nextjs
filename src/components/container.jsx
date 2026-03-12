@@ -1,6 +1,6 @@
-const Container = ({ children, fluid, paddingTop }) => (
+const Container = ({ children, fluid, paddingTop, className }) => (
   <div
-    className={`w-full ${fluid ? "mx-auto max-w-7xl" : ""} ${paddingTop ? "pt-24" : ""}`}
+    className={`w-full ${className || ""} ${fluid ? "mx-auto max-w-7xl" : ""} ${paddingTop ? "pt-24" : ""}`}
   >
     {children}
   </div>

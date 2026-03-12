@@ -20,7 +20,7 @@ const LatestGames = ({ title, limit = 9, platformId = null }) => {
 
   return (
     games && (
-      <div className="flex flex-col gap-5 py-8">
+      <div className="mt-8 flex flex-col gap-5">
         <h2 className="text-lg">{title}</h2>
 
         <GridGames games={games} />
