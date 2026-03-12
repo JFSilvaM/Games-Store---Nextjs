@@ -37,6 +37,14 @@ const Home = () => (
       btnLink="/profile"
       image="/img01.png"
     />
+
+    <Container fluid className="mb-20">
+      <LatestGames
+        title="Nintendo"
+        limit={3}
+        platformId={platformsId.nintendo}
+      />
+    </Container>
   </BasicLayout>
 );
 

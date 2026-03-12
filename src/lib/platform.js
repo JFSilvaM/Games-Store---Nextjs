@@ -12,3 +12,16 @@ export const getAllPlatforms = async () => {
     throw error;
   }
 };
+
+export const getPlatformBySlug = async (slug) => {
+  try {
+    const filters = `filters[slug][$eq]=${slug}`;
+    const url = `${ENV.API_URL}/${ENV.ENDPOINTS.PLATFORM}?${filters}`;
+    const params = { cache: "no-store" };
+
+    const response = await fetch(url, params);
+    return await response.json();
+  } catch (error) {
+    throw error;
+  }
+};
