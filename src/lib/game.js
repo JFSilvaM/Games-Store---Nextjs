@@ -42,3 +42,17 @@ export const getGamesByPlatformSlug = async (slug, page) => {
     throw error;
   }
 };
+
+export const searchGames = async (text, page) => {
+  try {
+    const filters = `filters[title][$contains]=${text}`;
+    const pagination = `pagination[page]=${page}&pagination[pageSize]=3`;
+    const populate = "populate=*";
+    const url = `${ENV.API_URL}/${ENV.ENDPOINTS.GAME}?${filters}&${pagination}&${populate}`;
+
+    const response = await fetch(url);
+    return await response.json();
+  } catch (error) {
+    throw error;
+  }
+};

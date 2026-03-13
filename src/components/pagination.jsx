@@ -1,11 +1,11 @@
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
 
-const Pagination = ({ pagination }) => (
+const Pagination = ({ pagination, searchText }) => (
   <div className="flex self-center">
     <nav aria-label="Pagination" className="inline-flex text-sm">
       <Link
-        href={`?page=${pagination.page > 1 ? pagination.page - 1 : 1}`}
+        href={`?page=${pagination.page > 1 ? pagination.page - 1 : 1}&searchText=${searchText}`}
         className="rounded-l-md px-2 py-2 text-neutral-400 inset-ring inset-ring-neutral-400"
       >
         <ChevronLeftIcon className="size-5" />
@@ -14,7 +14,7 @@ const Pagination = ({ pagination }) => (
       {[...Array(pagination.pageCount)].map((_, i) => (
         <Link
           key={i}
-          href={`?page=${i + 1}`}
+          href={`?page=${i + 1}&searchText=${searchText}`}
           className={`px-4 py-2 text-neutral-400 inset-ring inset-ring-neutral-400 ${pagination.page === i + 1 ? "bg-orange-600" : ""}`}
         >
           <span
@@ -26,7 +26,7 @@ const Pagination = ({ pagination }) => (
       ))}
 
       <Link
-        href={`?page=${pagination.pageCount > pagination.page ? pagination.page + 1 : pagination.pageCount}`}
+        href={`?page=${pagination.pageCount > pagination.page ? pagination.page + 1 : pagination.pageCount}&searchText=${searchText}`}
         className="rounded-r-md px-2 py-2 text-neutral-400 inset-ring inset-ring-neutral-400"
       >
         <ChevronRightIcon className="size-5" />

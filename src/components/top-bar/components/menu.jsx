@@ -6,13 +6,23 @@ import { Button, Input } from "@headlessui/react";
 import { MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const Menu = ({ isOpenSearch }) => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
   const [platforms, setPlatforms] = useState(null);
-  const [showSearch, setShowSearch] = useState(false);
+  const [showSearch, setShowSearch] = useState(isOpenSearch);
+  const [searchText, setSearchText] = useState("");
 
   const openCloseSearch = () => setShowSearch((prevState) => !prevState);
+
+  const onSearch = (e) => {
+    setSearchText(e.target.value);
+    router.replace(`/search?searchText=${e.target.value}`);
+  };
 
   useEffect(() => {
     (async () => {
@@ -23,6 +33,10 @@ const Menu = ({ isOpenSearch }) => {
         console.error(error);
       }
     })();
+  }, []);
+
+  useEffect(() => {
+    setSearchText(searchParams.get("searchText") || "");
   }, []);
 
   return (
@@ -63,6 +77,8 @@ const Menu = ({ isOpenSearch }) => {
           id="search-games"
           placeholder="Buscador"
           className="text-md placeholder:text-foreground/70 w-full overflow-hidden py-2.5 pr-20 pl-7 data-focus:outline-none"
+          onChange={onSearch}
+          value={searchText}
         />
       </div>
     </div>

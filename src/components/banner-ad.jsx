@@ -25,6 +25,7 @@ const BannerAd = ({ title, subtitle, btnTitle, btnLink, image }) => (
         alt="Banner add gaming"
         width={400}
         height={400}
+        loading="eager"
         className="h-auto w-auto"
       />
     </Container>
