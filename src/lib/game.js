@@ -32,7 +32,7 @@ export const getLatestPublishedGames = async (limit = 9, platformId = null) => {
 export const getGamesByPlatformSlug = async (slug, page) => {
   try {
     const filters = `filters[platform][slug][$eq]=${slug}`;
-    const pagination = `pagination[page]=${page}&pagination[pageSize]=30`;
+    const pagination = `pagination[page]=${page}&pagination[pageSize]=3`;
     const populate = "populate=*";
     const url = `${ENV.API_URL}/${ENV.ENDPOINTS.GAME}?${filters}&${pagination}&${populate}`;
 

@@ -1,8 +1,8 @@
+import DiscountLabel from "@/components/discount-label";
 import { ENV } from "@/config/env";
 import { calcDiscountedPrice } from "@/utils/calc-discounted-price";
 import Image from "next/image";
 import Link from "next/link";
-import DiscountLabel from "./discount-label";
 
 const GridGames = ({ games }) => {
   return (
@@ -15,6 +15,7 @@ const GridGames = ({ games }) => {
               alt={game.cover.name}
               width={165}
               height={165}
+              loading="eager"
               unoptimized
               className="h-60 w-full rounded-md object-cover"
             />
