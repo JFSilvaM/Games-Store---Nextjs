@@ -1,5 +1,6 @@
 import BasicLayout from "@/components/basic-layout";
 import HeaderWallpaper from "@/components/game/header-wallpaper";
+import Panel from "@/components/game/panel";
 import { getGameBySlug } from "@/lib/game";
 
 const GamePage = async ({ params }) => {
@@ -11,6 +12,8 @@ const GamePage = async ({ params }) => {
   return (
     <BasicLayout>
       <HeaderWallpaper image={gameData.wallpaper} />
+
+      <Panel gameData={gameData} />
     </BasicLayout>
   );
 };
