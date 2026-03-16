@@ -13,6 +13,7 @@ const Footer = () => (
               alt="Gaming"
               width={120}
               height={120}
+              loading="eager"
               className="h-auto w-auto"
             />
           </Link>

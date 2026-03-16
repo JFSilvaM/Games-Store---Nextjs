@@ -56,3 +56,19 @@ export const searchGames = async (text, page) => {
     throw error;
   }
 };
+
+export const getGameBySlug = async (slug) => {
+  try {
+    const filter = `filters[slug][$eq]=${slug}`;
+    const populateGame =
+      "populate[0]=wallpaper&populate[1]=cover&populate[2]=screenshots&populate[3]=platform";
+    const populatePlatform = "populate[4]=platform.icon";
+    const populates = `${populateGame}&${populatePlatform}`;
+    const url = `${ENV.API_URL}/${ENV.ENDPOINTS.GAME}?${filter}&${populates}`;
+
+    const response = await fetch(url);
+    return await response.json();
+  } catch (error) {
+    throw error;
+  }
+};

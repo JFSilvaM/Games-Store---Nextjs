@@ -25,6 +25,7 @@ const AuthLayout = ({ children }) => {
               alt="Gaming"
               width={165}
               height={165}
+              loading="eager"
               className="h-auto w-auto"
             />
           </Link>
