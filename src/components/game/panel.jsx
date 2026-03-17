@@ -12,15 +12,17 @@ const Panel = ({ gameData }) => {
 
   return (
     <Container fluid className="relative -mt-36 flex gap-5">
-      <Image
-        src={`${ENV.SERVER_HOST}${gameData.cover.url}`}
-        alt={gameData.cover.name}
-        width={165}
-        height={165}
-        unoptimized
-        loading="eager"
-        className="h-80 w-full rounded-md object-cover"
-      />
+      <div className="h-80 w-full">
+        <Image
+          src={`${ENV.SERVER_HOST}${gameData.cover.url}`}
+          alt={gameData.cover.name}
+          width={165}
+          height={165}
+          unoptimized
+          loading="eager"
+          className="h-full w-full rounded-md object-cover"
+        />
+      </div>
 
       <div className="flex h-fit w-full flex-col items-center gap-2 rounded-md bg-neutral-700/10 p-5 backdrop-blur-sm">
         <h2 className="text-2xl">{gameData.title}</h2>
