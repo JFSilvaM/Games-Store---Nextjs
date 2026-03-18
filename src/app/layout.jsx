@@ -1,4 +1,5 @@
 import { AuthProvider } from "@/context/auth-context";
+import { CartProvider } from "@/context/cart-context";
 import { Geist, Geist_Mono } from "next/font/google";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
@@ -25,7 +26,9 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <AuthProvider>{children}</AuthProvider>
+        <AuthProvider>
+          <CartProvider>{children}</CartProvider>
+        </AuthProvider>
       </body>
     </html>
   );
