@@ -1,5 +1,5 @@
 import Container from "@/components/container";
-import Wishlist from "@/components/wishlist";
+import WishlistButton from "@/components/wishlist-button";
 import { ENV } from "@/config/env";
 import { calcDiscountedPrice } from "@/utils/calc-discounted-price";
 import { Button } from "@headlessui/react";
@@ -71,7 +71,10 @@ const Panel = ({ gameData }) => {
           </Button>
         </Link>
 
-        <Wishlist gameId={gameData.id} className="absolute right-5 size-7" />
+        <WishlistButton
+          gameId={gameData.documentId}
+          className="absolute right-5 size-7"
+        />
       </div>
     </Container>
   );

@@ -1,5 +1,6 @@
 import Address from "@/components/profile/tabs/components/address/address";
 import Settings from "@/components/profile/tabs/components/settings";
+import Wishlist from "@/components/profile/tabs/components/wishlist";
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
 
 const tabsInfo = [
@@ -9,7 +10,7 @@ const tabsInfo = [
   },
   {
     title: "Lista de deseos",
-    content: <p>Contenido de lista de deseos</p>,
+    content: <Wishlist />,
   },
   {
     title: "Direcciones",

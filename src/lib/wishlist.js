@@ -49,3 +49,16 @@ export const deleteGameFromWishlist = async (id) => {
     throw error;
   }
 };
+
+export const getWishlist = async (userId) => {
+  try {
+    const filters = `filters[user][id][$eq]=${userId}`;
+    const populate = `populate[0]=game&populate[1]=game.cover`;
+    const url = `${ENV.API_URL}/${ENV.ENDPOINTS.WISHLIST}?${filters}&${populate}`;
+
+    const response = await authFetch(url);
+    return await response.json();
+  } catch (error) {
+    throw error;
+  }
+};

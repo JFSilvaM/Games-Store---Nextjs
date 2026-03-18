@@ -10,7 +10,7 @@ import { HeartIcon as HeartIconOutline } from "@heroicons/react/24/outline";
 import { HeartIcon } from "@heroicons/react/24/solid";
 import { useEffect, useState } from "react";
 
-const Wishlist = ({ gameId, className }) => {
+const WishlistButton = ({ gameId, className }) => {
   const { user } = useAuth();
 
   const [hasWishlist, setHasWishlist] = useState([]);
@@ -22,7 +22,7 @@ const Wishlist = ({ gameId, className }) => {
 
   const deleteWishlist = async () => {
     try {
-      await deleteGameFromWishlist(hasWishlist[0].id);
+      await deleteGameFromWishlist(hasWishlist[0].documentId);
       setHasWishlist([]);
     } catch (error) {
       throw error;
@@ -53,4 +53,4 @@ const Wishlist = ({ gameId, className }) => {
   );
 };
 
-export default Wishlist;
+export default WishlistButton;
