@@ -10,13 +10,13 @@ import { HeartIcon as HeartIconOutline } from "@heroicons/react/24/outline";
 import { HeartIcon } from "@heroicons/react/24/solid";
 import { useEffect, useState } from "react";
 
-const WishlistButton = ({ gameId, className }) => {
+const WishlistButton = ({ gameData, removeCallback, className }) => {
   const { user } = useAuth();
 
   const [hasWishlist, setHasWishlist] = useState([]);
 
   const addWishlist = async () => {
-    const response = await addGameToWishlist(user.id, gameId);
+    const response = await addGameToWishlist(user.id, gameData.documentId);
     setHasWishlist([response.data]);
   };
 
@@ -24,6 +24,8 @@ const WishlistButton = ({ gameId, className }) => {
     try {
       await deleteGameFromWishlist(hasWishlist[0].documentId);
       setHasWishlist([]);
+
+      if (removeCallback) removeCallback();
     } catch (error) {
       throw error;
     }
@@ -32,13 +34,13 @@ const WishlistButton = ({ gameId, className }) => {
   useEffect(() => {
     (async () => {
       try {
-        const wishlistCheckRes = await wishlistCheck(user.id, gameId);
+        const wishlistCheckRes = await wishlistCheck(user.id, gameData.id);
         setHasWishlist(wishlistCheckRes.data);
       } catch (error) {
         throw error;
       }
     })();
-  }, [gameId]);
+  }, [gameData]);
 
   return hasWishlist.length ? (
     <HeartIcon

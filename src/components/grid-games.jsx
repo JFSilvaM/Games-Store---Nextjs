@@ -8,7 +8,7 @@ const GridGames = ({ games }) => {
   return (
     <div className="grid grid-cols-3 gap-4">
       {games.map((game) => (
-        <Link key={game.id} href={game.slug}>
+        <Link key={game.id} href={`/${game.slug}`}>
           <div className="relative hover:opacity-60">
             <Image
               src={`${ENV.SERVER_HOST}${game.cover.url}`}

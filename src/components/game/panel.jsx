@@ -72,7 +72,7 @@ const Panel = ({ gameData }) => {
         </Link>
 
         <WishlistButton
-          gameId={gameData.documentId}
+          gameData={gameData}
           className="absolute right-5 size-7"
         />
       </div>
