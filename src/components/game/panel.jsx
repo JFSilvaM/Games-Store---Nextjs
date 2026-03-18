@@ -1,14 +1,30 @@
+"use client";
+
 import Container from "@/components/container";
 import WishlistButton from "@/components/wishlist-button";
 import { ENV } from "@/config/env";
+import { useCart } from "@/hooks/use-cart";
 import { calcDiscountedPrice } from "@/utils/calc-discounted-price";
 import { Button } from "@headlessui/react";
-import { CheckIcon, TagIcon } from "@heroicons/react/24/solid";
+import { ArrowPathIcon, CheckIcon, TagIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
-import Link from "next/link";
+import { useState } from "react";
 
 const Panel = ({ gameData }) => {
+  const { addCart } = useCart();
+
+  const [loading, setLoading] = useState(false);
+
   const buyPrice = calcDiscountedPrice(gameData.price, gameData.discount);
+
+  const addCartWrapper = () => {
+    setLoading(true);
+    addCart(gameData.id);
+
+    setTimeout(() => {
+      setLoading(false);
+    }, 500);
+  };
 
   return (
     <Container fluid className="relative -mt-36 flex gap-5">
@@ -65,11 +81,19 @@ const Panel = ({ gameData }) => {
           <span className="text-4xl">{buyPrice}€</span>
         </div>
 
-        <Link href="#" className="w-full">
-          <Button className="text-foreground w-full cursor-pointer rounded-md bg-orange-600 px-5 py-2 outline-none hover:bg-orange-400">
-            Comprar ahora
-          </Button>
-        </Link>
+        <Button
+          onClick={addCartWrapper}
+          disabled={loading}
+          className="text-foreground w-full cursor-pointer rounded-md bg-orange-600 px-5 py-2 outline-none hover:bg-orange-400"
+        >
+          {loading ? (
+            <div className="flex justify-center">
+              <ArrowPathIcon className="size-6 animate-spin" />
+            </div>
+          ) : (
+            <span>Añadir al carrito</span>
+          )}
+        </Button>
 
         <WishlistButton
           gameData={gameData}

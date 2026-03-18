@@ -16,7 +16,7 @@ const WishlistButton = ({ gameData, removeCallback, className }) => {
   const [hasWishlist, setHasWishlist] = useState([]);
 
   const addWishlist = async () => {
-    const response = await addGameToWishlist(user.id, gameData.documentId);
+    const response = await addGameToWishlist(user?.id, gameData.documentId);
     setHasWishlist([response.data]);
   };
 
@@ -34,7 +34,7 @@ const WishlistButton = ({ gameData, removeCallback, className }) => {
   useEffect(() => {
     (async () => {
       try {
-        const wishlistCheckRes = await wishlistCheck(user.id, gameData.id);
+        const wishlistCheckRes = await wishlistCheck(user?.id, gameData.id);
         setHasWishlist(wishlistCheckRes.data);
       } catch (error) {
         throw error;

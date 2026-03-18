@@ -1,5 +1,6 @@
 "use client";
 
+import { addCart, getCart } from "@/lib/cart";
 import { createContext, useEffect, useState } from "react";
 
 export const CartContext = createContext();
@@ -9,13 +10,13 @@ export const CartProvider = ({ children }) => {
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
-    // TODO: Obtener carrito
+    setCart(getCart());
   }, []);
 
   const data = {
     cart,
     total,
-    addCart: () => {},
+    addCart,
     deleteItem: () => {},
     deleteAllItems: () => {},
     changeQuantityItem: () => {},
