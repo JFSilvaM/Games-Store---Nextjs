@@ -1,6 +1,7 @@
 import BasicLayout from "@/components/basic-layout";
 import HeaderWallpaper from "@/components/game/header-wallpaper";
 import Info from "@/components/game/info";
+import Media from "@/components/game/media/media";
 import Panel from "@/components/game/panel";
 import { getGameBySlug } from "@/lib/game";
 
@@ -17,6 +18,8 @@ const GamePage = async ({ params }) => {
       <Panel gameData={gameData} />
 
       <Info gameData={gameData} />
+
+      <Media gameData={gameData} />
     </BasicLayout>
   );
 };
