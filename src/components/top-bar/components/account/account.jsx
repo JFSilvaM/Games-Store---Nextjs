@@ -2,14 +2,14 @@
 
 import SelectMenu from "@/components/top-bar/components/account/components/select-menu";
 import { useAuth } from "@/hooks/use-auth";
+import { useCart } from "@/hooks/use-cart";
 import { Button } from "@headlessui/react";
 import { ShoppingCartIcon } from "@heroicons/react/24/solid";
 import { useRouter } from "next/navigation";
 
-const total = 5;
-
 const Account = () => {
   const { user } = useAuth();
+  const { total } = useCart();
   const router = useRouter();
 
   const goToCart = () => {

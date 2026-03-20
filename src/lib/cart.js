@@ -20,3 +20,9 @@ export const getCart = () => {
 
   return JSON.parse(response);
 };
+
+export const countCart = () => {
+  let count = 0;
+  getCart().forEach((item) => (count += item.quantity));
+  return count;
+};
