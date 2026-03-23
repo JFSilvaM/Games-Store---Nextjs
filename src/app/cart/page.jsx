@@ -1,6 +1,7 @@
 "use client";
 
 import CartLayout from "@/components/cart/cart-layout";
+import StepOne from "@/components/cart/components/step-one";
 import { useCart } from "@/hooks/use-cart";
 import { getGameById } from "@/lib/game";
 import { useSearchParams } from "next/navigation";
@@ -15,24 +16,23 @@ const CartPage = () => {
   useEffect(() => {
     (async () => {
       try {
-        cart?.map(async (item) => {
-          const res = await getGameById(item.documentId);
-          setGames((prevGames) => [
-            ...prevGames,
-            { ...res.data, quantity: item.quantity },
-          ]);
-        });
+        const gameData = await Promise.all(
+          cart?.map(async (item) => {
+            const res = await getGameById(item.documentId);
+            return { ...res.data, quantity: item.quantity };
+          }) || []
+        );
+
+        setGames(gameData);
       } catch (error) {
         throw error;
       }
     })();
   }, [cart]);
 
-  console.log(games);
-
   return (
     <CartLayout>
-      {currentStep === 1 && <p>Step 1</p>}
+      {currentStep === 1 && <StepOne games={games} />}
       {currentStep === 2 && <p>Step 2</p>}
       {currentStep === 3 && <p>Step 3</p>}
     </CartLayout>
