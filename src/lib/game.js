@@ -72,3 +72,15 @@ export const getGameBySlug = async (slug) => {
     throw error;
   }
 };
+
+export const getGameById = async (id) => {
+  try {
+    const populate = "populate[0]=cover&populate[1]=platform";
+    const url = `${ENV.API_URL}/${ENV.ENDPOINTS.GAME}/${id}?${populate}`;
+
+    const response = await fetch(url);
+    return await response.json();
+  } catch (error) {
+    throw error;
+  }
+};

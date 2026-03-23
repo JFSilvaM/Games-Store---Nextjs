@@ -19,7 +19,7 @@ const Panel = ({ gameData }) => {
 
   const addCartWrapper = () => {
     setLoading(true);
-    addCart(gameData.id);
+    addCart(gameData);
 
     setTimeout(() => {
       setLoading(false);

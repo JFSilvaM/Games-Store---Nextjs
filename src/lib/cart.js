@@ -1,11 +1,15 @@
 import { ENV } from "@/config/env";
 
-export const addCart = (gameId) => {
+export const addCart = (gameData) => {
   const games = getCart();
-  const objIndex = games.findIndex((game) => game.id === gameId);
+  const objIndex = games.findIndex((game) => game.id === gameData.id);
 
   if (objIndex < 0) {
-    games.push({ id: gameId, quantity: 1 });
+    games.push({
+      id: gameData.id,
+      documentId: gameData.documentId,
+      quantity: 1,
+    });
   } else {
     games[objIndex].quantity += 1;
   }

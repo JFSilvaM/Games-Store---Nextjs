@@ -14,8 +14,8 @@ export const CartProvider = ({ children }) => {
     setCart(getCart());
   };
 
-  const addCart = (gameId) => {
-    addGameToCart(gameId);
+  const addCart = (gameData) => {
+    addGameToCart(gameData);
     refreshCountCart();
   };
 
