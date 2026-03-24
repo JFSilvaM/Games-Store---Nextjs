@@ -1,10 +1,17 @@
 import { ENV } from "@/config/env";
+import { useCart } from "@/hooks/use-cart";
 import { calcDiscountedPrice } from "@/utils/calc-discounted-price";
-import { TrashIcon } from "@heroicons/react/24/solid";
+import {
+  MinusCircleIcon,
+  PlusCircleIcon,
+  TrashIcon,
+} from "@heroicons/react/24/solid";
 import Image from "next/image";
 
-const StepOne = ({ games }) => (
-  <div className="grid grid-cols-3 gap-4 py-5 pb-10">
+const Basket = ({ games }) => {
+  const { changeQuantityItem, deleteItem } = useCart();
+
+  return (
     <div className="col-span-2 flex flex-col gap-4">
       <h2 className="text-lg font-bold">Cesta</h2>
 
@@ -36,11 +43,33 @@ const StepOne = ({ games }) => (
                   </p>
                 </div>
 
-                <TrashIcon className="size-4" />
+                <TrashIcon
+                  onClick={() => deleteItem(game.id)}
+                  className="size-4 cursor-pointer hover:text-orange-600"
+                />
               </div>
 
               <div className="flex items-center gap-2">
-                <div>SELECT</div>
+                <div className="flex items-center gap-1">
+                  <MinusCircleIcon
+                    onClick={() =>
+                      changeQuantityItem(
+                        game.id,
+                        Math.max(1, game.quantity - 1),
+                      )
+                    }
+                    className="size-4 cursor-pointer hover:text-orange-600"
+                  />
+
+                  {game.quantity}
+
+                  <PlusCircleIcon
+                    onClick={() =>
+                      changeQuantityItem(game.id, game.quantity + 1)
+                    }
+                    className="size-4 cursor-pointer hover:text-orange-600"
+                  />
+                </div>
 
                 <span className="font-semibold">
                   {calcDiscountedPrice(game.price, game.discount)}€
@@ -51,11 +80,7 @@ const StepOne = ({ games }) => (
         ))}
       </div>
     </div>
+  );
+};
 
-    <div>
-      <p>resumen</p>
-    </div>
-  </div>
-);
-
-export default StepOne;
+export default Basket;

@@ -1,7 +1,7 @@
 "use client";
 
 import CartLayout from "@/components/cart/cart-layout";
-import StepOne from "@/components/cart/components/step-one";
+import StepOne from "@/components/cart/components/step-one/step-one";
 import { useCart } from "@/hooks/use-cart";
 import { getGameById } from "@/lib/game";
 import { useSearchParams } from "next/navigation";
@@ -20,7 +20,7 @@ const CartPage = () => {
           cart?.map(async (item) => {
             const res = await getGameById(item.documentId);
             return { ...res.data, quantity: item.quantity };
-          }) || []
+          }) || [],
         );
 
         setGames(gameData);

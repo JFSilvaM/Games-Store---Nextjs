@@ -1,6 +1,12 @@
 "use client";
 
-import { addCart as addGameToCart, countCart, getCart } from "@/lib/cart";
+import {
+  addCart as addGameToCart,
+  changeQuantity,
+  countCart,
+  deleteGameCart,
+  getCart,
+} from "@/lib/cart";
 import { createContext, useEffect, useState } from "react";
 
 export const CartContext = createContext();
@@ -19,6 +25,16 @@ export const CartProvider = ({ children }) => {
     refreshCountCart();
   };
 
+  const changeQuantityItem = (gameId, quantity) => {
+    changeQuantity(gameId, quantity);
+    refreshCountCart();
+  };
+
+  const deleteItem = (gameId) => {
+    deleteGameCart(gameId);
+    refreshCountCart();
+  };
+
   useEffect(() => {
     setCart(getCart());
   }, []);
@@ -27,9 +43,9 @@ export const CartProvider = ({ children }) => {
     cart,
     total,
     addCart,
-    deleteItem: () => {},
+    deleteItem,
     deleteAllItems: () => {},
-    changeQuantityItem: () => {},
+    changeQuantityItem,
   };
 
   return <CartContext.Provider value={data}>{children}</CartContext.Provider>;
