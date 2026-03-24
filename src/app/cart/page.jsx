@@ -2,6 +2,7 @@
 
 import CartLayout from "@/components/cart/cart-layout";
 import StepOne from "@/components/cart/components/step-one/step-one";
+import StepTwo from "@/components/cart/components/step-two/step-two";
 import { useCart } from "@/hooks/use-cart";
 import { getGameById } from "@/lib/game";
 import { useSearchParams } from "next/navigation";
@@ -33,7 +34,7 @@ const CartPage = () => {
   return (
     <CartLayout>
       {currentStep === 1 && <StepOne games={games} />}
-      {currentStep === 2 && <p>Step 2</p>}
+      {currentStep === 2 && <StepTwo games={games} />}
       {currentStep === 3 && <p>Step 3</p>}
     </CartLayout>
   );
