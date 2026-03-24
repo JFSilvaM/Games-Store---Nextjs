@@ -1,5 +1,6 @@
 import Addresses from "@/components/cart/components/step-two/components/addresses";
 import Payment from "@/components/cart/components/step-two/components/payment";
+import Resume from "@/components/cart/components/step-two/components/resume";
 import { ENV } from "@/config/env";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
@@ -7,7 +8,7 @@ import { useState } from "react";
 
 const stripeInit = loadStripe(ENV.STRIPE_TOKEN);
 
-const StepTwo = () => {
+const StepTwo = ({ games }) => {
   const [addressSelected, setAddressSelected] = useState(null);
 
   return (
@@ -22,7 +23,7 @@ const StepTwo = () => {
           {addressSelected && <Payment />}
         </div>
 
-        <div>Resume</div>
+        <Resume games={games} addressSelected={addressSelected} />
       </div>
     </Elements>
   );

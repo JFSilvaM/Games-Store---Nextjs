@@ -19,7 +19,7 @@ const Addresses = ({ addressSelected, setAddressSelected }) => {
   }, []);
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-5">
       <h2 className="text-lg font-bold">Dirección</h2>
 
       <div className="flex flex-col gap-2">
