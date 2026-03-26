@@ -54,7 +54,8 @@ const Resume = ({ games }) => {
 
           <Button
             onClick={goToStepTwo}
-            className="text-foreground cursor-pointer rounded-md bg-orange-600 px-5 py-2 outline-none hover:bg-orange-400"
+            disabled={!games.length}
+            className={`text-foreground flex justify-center rounded-md bg-orange-600 px-5 py-2 outline-none ${!games.length ? "cursor-not-allowed opacity-50" : "cursor-pointer hover:bg-orange-400"}`}
           >
             Proceder con el pago
           </Button>
