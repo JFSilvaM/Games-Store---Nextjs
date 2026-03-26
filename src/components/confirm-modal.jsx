@@ -6,6 +6,8 @@ const ConfirmModal = ({ isOpen, onOpenClose, title, content, onAccept }) => {
   const [loading, setLoading] = useState(false);
 
   const handleClick = async () => {
+    if (!onAccept) return onOpenClose();
+
     setLoading(true);
     try {
       await onAccept();
@@ -25,13 +27,13 @@ const ConfirmModal = ({ isOpen, onOpenClose, title, content, onAccept }) => {
     >
       <DialogPanel
         transition
-        className="flex min-w-2xl flex-col gap-3 rounded-xl bg-white/5 p-6 backdrop-blur-2xl duration-300 ease-out data-closed:transform-[scale(95%)] data-closed:opacity-0"
+        className="flex max-h-[90dvh] min-w-2xl flex-col gap-3 overflow-auto rounded-xl bg-white/5 p-6 backdrop-blur-2xl duration-300 ease-out data-closed:transform-[scale(95%)] data-closed:opacity-0"
       >
         <DialogTitle as="h3" className="text-3xl uppercase">
           {title}
         </DialogTitle>
 
-        <p>{content}</p>
+        {content}
 
         <Button
           onClick={handleClick}

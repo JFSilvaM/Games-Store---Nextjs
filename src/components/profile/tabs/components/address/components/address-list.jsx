@@ -114,7 +114,7 @@ const AddressList = ({ reload, onReload }) => {
         isOpen={isOpenDelete}
         onOpenClose={onOpenCloseDelete}
         title="Eliminar dirección"
-        content="¿Estás seguro de que quieres eliminar esta dirección?"
+        content={<p>¿Estás seguro de que quieres eliminar esta dirección?</p>}
         onAccept={handleConfirmDelete}
       />
     </div>

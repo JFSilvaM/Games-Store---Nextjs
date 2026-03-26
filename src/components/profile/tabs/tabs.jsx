@@ -1,5 +1,5 @@
 import Address from "@/components/profile/tabs/components/address/address";
-import Orders from "@/components/profile/tabs/components/orders";
+import Orders from "@/components/profile/tabs/components/orders/orders";
 import Settings from "@/components/profile/tabs/components/settings";
 import Wishlist from "@/components/profile/tabs/components/wishlist/wishlist";
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
