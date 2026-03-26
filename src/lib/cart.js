@@ -1,4 +1,5 @@
 import { ENV } from "@/config/env";
+import { authFetch } from "@/lib/auth-fetch";
 
 export const addCart = (gameData) => {
   const games = getCart();
@@ -45,4 +46,26 @@ export const deleteGameCart = (gameId) => {
   const updateGames = games.filter((game) => game.id !== gameId);
 
   localStorage.setItem(ENV.CART, JSON.stringify(updateGames));
+};
+
+export const deleteCart = () => localStorage.removeItem(ENV.CART);
+
+export const paymentCart = async (token, products, idUser, address) => {
+  try {
+    const url = `${ENV.API_URL}/${ENV.ENDPOINTS.PAYMENT_ORDER}`;
+    const params = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        token,
+        products,
+        idUser,
+        addressShipping: address,
+      }),
+    };
+
+    return await authFetch(url, params);
+  } catch (error) {
+    throw error;
+  }
 };

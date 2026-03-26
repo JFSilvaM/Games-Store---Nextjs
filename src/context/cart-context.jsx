@@ -4,6 +4,7 @@ import {
   addCart as addGameToCart,
   changeQuantity,
   countCart,
+  deleteCart,
   deleteGameCart,
   getCart,
 } from "@/lib/cart";
@@ -35,6 +36,11 @@ export const CartProvider = ({ children }) => {
     refreshCountCart();
   };
 
+  const deleteAllItems = () => {
+    deleteCart();
+    refreshCountCart();
+  };
+
   useEffect(() => {
     setCart(getCart());
   }, []);
@@ -44,7 +50,7 @@ export const CartProvider = ({ children }) => {
     total,
     addCart,
     deleteItem,
-    deleteAllItems: () => {},
+    deleteAllItems,
     changeQuantityItem,
   };
 
