@@ -1,4 +1,5 @@
 import Address from "@/components/profile/tabs/components/address/address";
+import Orders from "@/components/profile/tabs/components/orders";
 import Settings from "@/components/profile/tabs/components/settings";
 import Wishlist from "@/components/profile/tabs/components/wishlist/wishlist";
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
@@ -6,7 +7,7 @@ import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
 const tabsInfo = [
   {
     title: "Mis pedidos",
-    content: <p>Contenido de mis pedidos</p>,
+    content: <Orders />,
   },
   {
     title: "Lista de deseos",
