@@ -5,6 +5,13 @@ import Media from "@/components/game/media/media";
 import Panel from "@/components/game/panel";
 import { getGameBySlug } from "@/lib/game";
 
+export async function generateMetadata({ params }) {
+  const { game } = await params;
+  const gameRes = await getGameBySlug(game);
+
+  return { title: gameRes.data[0].title, description: gameRes.data[0].summary };
+}
+
 const GamePage = async ({ params }) => {
   const { game } = await params;
   const gameDataRes = await getGameBySlug(game);

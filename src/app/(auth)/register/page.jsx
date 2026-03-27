@@ -1,6 +1,8 @@
 import RegisterForm from "@/components/auth/register-form";
 import Link from "next/link";
 
+export const metadata = { title: "Registrarse" };
+
 const RegisterPage = () => (
   <div className="w-2/3">
     <h3 className="mb-5 font-semibold">Crear cuenta</h3>

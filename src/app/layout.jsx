@@ -16,8 +16,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Games Store",
-  description: "Games Store",
+  title: "Gaming - Tus juegos favoritos",
+  description:
+    "Tus juegos favoritos para Steam, PlayStation, Xbox, Switch al mejor precio.",
 };
 
 export default function RootLayout({ children }) {

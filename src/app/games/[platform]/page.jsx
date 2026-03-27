@@ -6,6 +6,13 @@ import Pagination from "@/components/pagination";
 import { getGamesByPlatformSlug } from "@/lib/game";
 import { getPlatformBySlug } from "@/lib/platform";
 
+export async function generateMetadata({ params }) {
+  const { platform } = await params;
+  const platformRes = await getPlatformBySlug(platform);
+
+  return { title: `Juegos de ${platformRes.data[0].title}` };
+}
+
 const PlatformPage = async ({ params, searchParams }) => {
   const { platform } = await params;
   const { page = 1 } = await searchParams;
